@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>{% block title %}{% endblock %}</title>
+  {% for file in cssdep %}
+  <link rel="stylesheet" href="{{file}}">
+  {% endfor %}
+</head>
+<body layout="vertical" md-theme="blue" layout-fill ng-app="FlaskMessages">
+<div layout="column" layout-fill>
+  <header ng-controller="MenuController">
+    <md-toolbar scroll-shrink layout="row">
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" ng-click="toggleMenu()">
+          <md-icon md-svg-icon="/static/img/menu.svg" aria-label="Settings"></md-icon>
+          </md-button>
+          <h2>
+            <span>Flask MD SQLAlchemy App</span>
+          </h2>
+      </div>
+    </md-toolbar>
+  </header>
+  <md-content layout="vertical" flex>
+    <!-- LEFT SIDEBAR -->
+      <md-sidenav class="md-sidenav-left" md-component-id="left">
+        <md-toolbar class="md-theme-blue">
+          <h1 class="md-toolbar-tools">Pseudo Menu</h1>
+        </md-toolbar>
+        <md-content ng-controller="MenuController" class="md-padding" flex layout="column" layout-align="start">
+          <md-button ng-click="toggleMenu()" class="md-primary" >
+            <md-icon md-svg-icon="/static/img/home.svg"></md-icon>Dom Farolino
+          </md-button>
+          <md-button ng-click="toggleMenu()" class="md-primary">
+            <md-icon md-svg-icon="/static/img/friends.svg"></md-icon>Dom Farolino
+          </md-button>
+          <md-button ng-click="toggleMenu()" class="md-primary">
+            <md-icon md-svg-icon="/static/img/account.svg"></md-icon>Dom Farolino
+          </md-button>
+        </md-content>
+      </md-sidenav>
+        <!-- MAIN CONTENT -->
+      <md-content id="main" layout="horizontal" layout-align="center">
+        <md-list id="main-list">
+          <div id="content">
+          {% block main %}
+          {% endblock %}
+          </div>
+        </md-list>
+      </md-content>
+    </md-content>
+</div>
+
+{% for file in jsdep %}
+  <script src="{{file}}"></script>
+{% endfor %}
+</body>
+</html>

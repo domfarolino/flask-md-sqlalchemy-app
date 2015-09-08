@@ -1,0 +1,17 @@
+# ----------------------
+# Flask
+# ----------------------
+flask
+SQLAlchemy
+Flask-SQLAlchemy
+pymysql
+
+# ----------------------
+# Testing
+# ----------------------
+#mock
+
+# ----------------------
+# Production Server
+# ----------------------
+gunicorn
